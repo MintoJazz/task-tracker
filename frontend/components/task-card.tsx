@@ -11,7 +11,7 @@ interface TaskCardProps {
     task: Task
     onDelete: (task: Task) => void
     onEdit: (task: Task) => void
-    onChecked: (taskId: number, isComplete: boolean) => void
+    onChecked: (taskData: Partial<Task>, taskId?: number, ) => void
 }
 
 export default function TaskCard({ task, onDelete, onEdit, onChecked }: TaskCardProps) {
@@ -19,7 +19,7 @@ export default function TaskCard({ task, onDelete, onEdit, onChecked }: TaskCard
         <ItemContent>
             <ItemTitle>
                 <Field orientation={"horizontal"}>
-                    <Checkbox id={`is-completed-${task.id}`} onCheckedChange={() => onChecked(task.id, !task.isCompleted)} name="is-completed" defaultChecked={task.isCompleted} />
+                    <Checkbox id={`is-completed-${task.id}`} onCheckedChange={() => onChecked({ isCompleted: !task.isCompleted}, task.id)} name="is-completed" defaultChecked={task.isCompleted} />
                     <Label className={(task.isCompleted) ? "line-through" : ""} htmlFor={`is-completed-${task.id}`}>{task.title}</Label>
                 </Field>
             </ItemTitle>
