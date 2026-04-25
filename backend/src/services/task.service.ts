@@ -1,5 +1,5 @@
 import { getNextId, tasks } from "../database/db";
-import { CreateTaskDTO, Task } from "../models/task.model";
+import { Task } from "../models/task.model";
 
 export const taskService = {
     findAll: () => tasks,
@@ -19,12 +19,11 @@ export const taskService = {
         return updatedTask
 
     },
-    createTask: (taskData: CreateTaskDTO) => {
+    createTask: (title: string) => {
         const newTask: Task = {
             id: getNextId(),
-            title: taskData.title,
-            description: taskData.description,
-            status: 'pending',
+            title: title,
+            isComplete: false,
             createdAt: new Date(),
             updatedAt: new Date()
         }

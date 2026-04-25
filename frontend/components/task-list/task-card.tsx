@@ -1,27 +1,24 @@
 import { Task } from "@/types/task";
-import { Item, ItemActions, ItemContent, ItemDescription, ItemTitle } from "../ui/item";
+import { Item, ItemActions, ItemContent, ItemTitle } from "../ui/item";
 import { Button } from "../ui/button";
 import { Pencil, Trash2 } from "lucide-react";
-import { StatusConfig } from "@/lib/contants";
-import { Badge } from "../ui/badge";
-import { cn } from "@/lib/utils";
 
 interface TaskCardProps {
     task: Task
-    statusConfig: StatusConfig
+    onDelete: (task: Task) => void
+    onEdit: (task: Task) => void
 }
 
-export default function TaskCard({ task, statusConfig }: TaskCardProps) {
+export default function TaskCard({ task, onDelete, onEdit }: TaskCardProps) {
     return <Item variant={"outline"} className="group">
         <ItemContent>
-            <ItemTitle>{task.title}</ItemTitle>
-            <ItemDescription>
-                <Badge className={cn(statusConfig.color, "")}>{statusConfig.label}</Badge>
-            </ItemDescription>
+            <ItemTitle>
+                <Button variant={"ghost"}>{task.title}</Button>
+            </ItemTitle>
         </ItemContent>
-        <ItemActions className="opacity-0 invisible group-hover:opacity-100 group-hover:visible ">
-            <Button className="cursor-pointer" size={"sm"} variant={"ghost"}><Pencil /></Button>
-            <Button className="cursor-pointer" size={"sm"} variant={"ghost"}><Trash2 /></Button>
+        <ItemActions className="opacity-0 invisible group-hover:opacity-80 group-hover:visible ">
+            <Button onClick={() => onEdit(task)} className="cursor-pointer" size={"icon-sm"} variant={"ghost"}><Pencil/></Button>
+            <Button onClick={() => onDelete(task)} className="cursor-pointer" size={"icon-sm"} variant={"ghost"}><Trash2/></Button>
         </ItemActions>
     </Item>
 }

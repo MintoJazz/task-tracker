@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { CreateTaskDTO, Task } from '../models/task.model';
+import { Task } from '../models/task.model';
 import { taskService } from '../services/task.service';
 
 export const taskController = {
@@ -15,8 +15,7 @@ export const taskController = {
         const id = Number.parseInt(req.params.id as string)
         const taskData: Partial<Task> = {
             title: req.body.title,
-            description: req.body.description,
-            status: req.body.status
+            isComplete: req.body.isComplete
         }
 
         const updatedTask = taskService.updateTask(id, taskData)
@@ -25,17 +24,14 @@ export const taskController = {
         else res.status(404).json({ message: 'Tarefa não encontrada' })
     },
     create: (req: Request, res: Response) => {
-        if (!req.body.title) {
+        const title = req.body.title
+
+        if (!title) {
             res.status(400).json({ message: 'O campo "title" é obrigatório' })
             return
         }
-        
-        const taskData: CreateTaskDTO = {
-            title: req.body.title,
-            description: req.body.description ?? undefined,
-        }
 
-        const newTask = taskService.createTask(taskData)
+        const newTask = taskService.createTask(title)
         res.status(201).json(newTask)
 
     },
