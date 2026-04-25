@@ -1,19 +1,19 @@
-import { Button } from "@/components/ui/button"
+import TaskCard from "@/components/task-list/task-card"
+import { STATUS_CONFIG } from "@/lib/contants"
+import { Task, TaskStatus } from "@/types/task"
 
 export default function Page() {
-  return (
-    <div className="flex min-h-svh p-6">
-      <div className="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
-        <div>
-          <h1 className="font-medium">Project ready!</h1>
-          <p>You may now add components and start building.</p>
-          <p>We&apos;ve already added the button component for you.</p>
-          <Button className="mt-2">Button</Button>
+    const task: Task = {
+        id: 1,
+        title: 'Testee',
+        status: TaskStatus.COMPLETED,
+        createdAt: new Date(),
+        updatedAt: new Date()
+    }
+
+    return (
+        <div className="flex justify-center items-center min-h-screen max-w-2xl p-6 mx-auto">
+            <TaskCard task={task} statusConfig={STATUS_CONFIG[task.status]}/>
         </div>
-        <div className="font-mono text-xs text-muted-foreground">
-          (Press <kbd>d</kbd> to toggle dark mode)
-        </div>
-      </div>
-    </div>
-  )
+    )
 }
