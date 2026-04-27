@@ -34,11 +34,11 @@ export function TaskContainer({ initialTasks, createTask, deleteTask, updateTask
 
     async function onUpdated(taskData: Partial<Task>, taskId?: number) {
         const prevTasks = tasks
-        const id = target?.id ?? taskId 
+        const id = target?.id ?? taskId
 
         try {
             setTasks(prev => prev.map(t => (t.id === id) ? { ...t, ...taskData } : t))
-            await updateTask(target!.id, taskData)
+            await updateTask(id, taskData)
         } catch (error) {
             console.log(error)
             setTasks(prevTasks)

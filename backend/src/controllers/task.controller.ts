@@ -13,10 +13,7 @@ export const taskController = {
     },
     update: (req: Request, res: Response) => {
         const id = Number.parseInt(req.params.id as string)
-        const taskData: Partial<Task> = {
-            title: req.body.title,
-            isComplete: req.body.isComplete
-        }
+        const taskData: Partial<Task> = { ...req.body }
 
         const updatedTask = taskService.updateTask(id, taskData)
         

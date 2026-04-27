@@ -19,8 +19,8 @@ export default function TaskCard({ task, onDelete, onEdit, onChecked }: TaskCard
         <ItemContent>
             <ItemTitle>
                 <Field orientation={"horizontal"}>
-                    <Checkbox id={`is-completed-${task.id}`} onCheckedChange={() => onChecked({ isCompleted: !task.isCompleted}, task.id)} name="is-completed" defaultChecked={task.isCompleted} />
-                    <Label className={(task.isCompleted) ? "line-through" : ""} htmlFor={`is-completed-${task.id}`}>{task.title}</Label>
+                    <Checkbox id={`is-completed-${task.id}`} onCheckedChange={() => onChecked({ isComplete: !task.isComplete}, task.id)} name="is-completed" checked={task.isComplete} />
+                    <Label className={(task.isComplete) ? "line-through" : ""} htmlFor={`is-completed-${task.id}`}>{task.title}</Label>
                 </Field>
             </ItemTitle>
             <ItemDescription className="italic text-xs">{formatarData(task.createdAt)}</ItemDescription>
