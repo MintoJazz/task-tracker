@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache"
 import { Task } from "./types/task"
 
 export async function getTasks() {
-    const res = await fetch(`${process.env.API_URL}api/tasks`, {
+    const res = await fetch(`${process.env.API_URL}/api/tasks`, {
         cache: 'no-store'
     })
     if (!res.ok) throw new Error('Falha ao buscar a lista de tarefas.')
@@ -12,7 +12,7 @@ export async function getTasks() {
 }
 
 export async function createTask(title: string) {
-    const res = await fetch(`${process.env.API_URL}api/tasks`, {
+    const res = await fetch(`${process.env.API_URL}/api/tasks`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ title })
@@ -23,7 +23,7 @@ export async function createTask(title: string) {
 }
 
 export async function updateTask(taskId: number, taskData: Partial<Task>) { 
-    const res = await fetch(`${process.env.API_URL}api/tasks/${taskId}`, {
+    const res = await fetch(`${process.env.API_URL}/api/tasks/${taskId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(taskData)
@@ -34,7 +34,7 @@ export async function updateTask(taskId: number, taskData: Partial<Task>) {
 }
 
 export async function deleteTask(taskId: number) {
-    const res = await fetch(`${process.env.API_URL}api/tasks/${taskId}`, {
+    const res = await fetch(`${process.env.API_URL}/api/tasks/${taskId}`, {
         method: 'DELETE'
     })
     if (!res.ok) throw new Error('Falha ao deletar a tarefa.')
