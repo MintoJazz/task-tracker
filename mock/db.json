@@ -1,0 +1,70 @@
+{
+  "statuses": [
+    { "id": "todo", "label": "A Fazer", "color": "slate" },
+    { "id": "in_progress", "label": "Em Andamento", "color": "blue" },
+    { "id": "review", "label": "Em Revisão", "color": "amber" },
+    { "id": "done", "label": "Concluído", "color": "green" },
+    { "id": "canceled", "label": "Cancelado", "color": "red" }
+  ],
+  "tasks": [
+    {
+      "id": "t-1",
+      "title": "Modelar o banco do TaskTracker",
+      "description": "Criar as tabelas principais de tarefas, status e logs de alteração usando PostgreSQL.",
+      "currentStatusId": "done",
+      "createdAt": "2026-08-10T09:00:00Z"
+    },
+    {
+      "id": "t-2",
+      "title": "Desenvolver a API no Backend",
+      "description": "Criar os endpoints RESTful para manipulação das tarefas e geração de logs automáticos.",
+      "currentStatusId": "in_progress",
+      "createdAt": "2026-08-11T14:30:00Z"
+    },
+    {
+      "id": "t-3",
+      "title": "Integrar com o Angular",
+      "description": "Consumir a API utilizando o HttpClient e renderizar o Kanban.",
+      "currentStatusId": "todo",
+      "createdAt": "2026-08-12T10:00:00Z"
+    }
+  ],
+  "taskLogs": [
+    {
+      "id": "log-1",
+      "taskId": "t-1",
+      "statusId": "todo",
+      "timestamp": "2026-08-10T09:00:00Z"
+    },
+    {
+      "id": "log-2",
+      "taskId": "t-1",
+      "statusId": "in_progress",
+      "timestamp": "2026-08-10T11:15:00Z"
+    },
+    {
+      "id": "log-3",
+      "taskId": "t-1",
+      "statusId": "review",
+      "timestamp": "2026-08-10T16:00:00Z"
+    },
+    {
+      "id": "log-4",
+      "taskId": "t-1",
+      "statusId": "done",
+      "timestamp": "2026-08-11T08:30:00Z"
+    },
+    {
+      "id": "log-5",
+      "taskId": "t-2",
+      "statusId": "todo",
+      "timestamp": "2026-08-11T14:30:00Z"
+    },
+    {
+      "id": "log-6",
+      "taskId": "t-2",
+      "statusId": "in_progress",
+      "timestamp": "2026-08-12T09:00:00Z"
+    }
+  ]
+}
